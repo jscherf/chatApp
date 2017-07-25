@@ -1,6 +1,7 @@
 # Simple Chat Application
 
 import network
+import socket
 import sys
 
 def heard(phrase):
@@ -11,7 +12,11 @@ if (len(sys.argv) >= 2):
 else:
     network.wait(whenHearCall=heard)
 
+print ("Start chat...")
+
 while network.isConnected():
     phrase = input()
-    print("me:" + phrase)
-    network.say(phrase)
+    if (phrase == "quit"):
+        connection.close()
+    else:
+        network.say(phrase)
