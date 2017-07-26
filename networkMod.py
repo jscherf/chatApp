@@ -265,10 +265,10 @@ def hangUp():
   conn.hangUp()
 
 def getLocalHostName():
-    return conn.localHostName()
+    return conn.localHostName
 
 def getRemoteHostName():
-    return conn.remoteHostName()
+    return conn.remoteHostName
     
   
 # END
