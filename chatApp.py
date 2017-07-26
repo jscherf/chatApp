@@ -4,16 +4,16 @@ import networkMod
 import sys
 
 def heard(phrase):
-    rhn = network.getRemoteHostName()
+    rhn = networkMod.getRemoteHostName()
     print(rhn + ":" + phrase)
 
 if (len(sys.argv) >= 2):
-    network.call (sys.argv[1], whenHearCall=heard)
+    networkMod.call (sys.argv[1], whenHearCall=heard)
 else:
-    network.wait(whenHearCall=heard)
+    networkMod.wait(whenHearCall=heard)
 
 print ("Start chat...")
 
-while network.isConnected():
+while networkMod.isConnected():
     phrase = input()
-    network.say(phrase)
+    networkMod.say(phrase)
