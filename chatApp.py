@@ -13,6 +13,7 @@ else:
     networkMod.wait(whenHearCall=heard)
 
 print ("Start chat...")
+print ("local host: " + lhn)
 
 while networkMod.isConnected():
     lhn = networkMod.getLocalHostName()
@@ -21,4 +22,4 @@ while networkMod.isConnected():
     if phrase == "quit":
         networkMod.hangUp()
     else:
-        networkMod.say(lhn + ": " + phrase)
+        networkMod.say(phrase)
