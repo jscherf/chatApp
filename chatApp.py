@@ -18,7 +18,7 @@ while networkMod.isConnected():
     lhn = networkMod.getLocalHostName()
     phrase = input()
     
-    if phrase = "quit":
+    if phrase == "quit":
         networkMod.hangUp()
     else:
         networkMod.say(lhn + ": " + phrase)
