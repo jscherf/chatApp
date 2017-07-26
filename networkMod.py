@@ -60,6 +60,7 @@ class Connection():
   def call(self, addr, whenHearCall, port=None):
     self.trace("call:" + addr)
     self.remoteHostName = addr
+    self.localHostName = socket.gethostname()
     if (port != None):
       self.port = port
     else:
@@ -82,7 +83,8 @@ class Connection():
     self.myHandle = _serverWait(self.interface, self.port)
     self.peerHandle, addr = _serverAccept(self.myHandle)
 
-    self.remoteHost = addr
+    self.remoteHostName = addr
+    self.localHostName = socket.gethostname()
     
     self.connected = True
     self.threadHandle = _startListenerThread(self.peerHandle, addr, whenHearCall, self.whenHungupHandler, self.endOfPacket)
