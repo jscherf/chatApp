@@ -5,8 +5,7 @@ import sys
 
 def heard(phrase):
     rhn = networkMod.getRemoteHostName()
-    print (rhn)
-    print (phrase)
+    print (rhn + ": " + phrase)
 
 if (len(sys.argv) >= 2):
     networkMod.call (sys.argv[1], whenHearCall=heard)
