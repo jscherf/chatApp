@@ -83,7 +83,7 @@ class Connection():
     self.myHandle = _serverWait(self.interface, self.port)
     self.peerHandle, addr = _serverAccept(self.myHandle)
 
-    self.remoteHostName = addr
+    self.remoteHostName = socket.getpeername()
     self.localHostName = socket.gethostname()
     
     self.connected = True
