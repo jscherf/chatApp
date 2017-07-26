@@ -12,11 +12,11 @@ if (len(sys.argv) >= 2):
 else:
     networkMod.wait(whenHearCall=heard)
 
+lhn = networkMod.getLocalHostName()
 print ("Start chat...")
 print ("local host: " + lhn)
 
 while networkMod.isConnected():
-    lhn = networkMod.getLocalHostName()
     phrase = input()
     
     if phrase == "quit":
