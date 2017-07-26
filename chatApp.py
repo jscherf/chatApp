@@ -1,17 +1,25 @@
 # Simple Chat Application
 
-import network
+import networkMod
 import sys
 
 def heard(phrase):
-    print("them:" + phrase)
+    rhn = networkMod.getRemoteHostName()
+    print (rhn + ": " + phrase)
 
 if (len(sys.argv) >= 2):
-    network.call (sys.argv[1], whenHearCall=heard)
+    networkMod.call (sys.argv[1], whenHearCall=heard)
 else:
-    network.wait(whenHearCall=heard)
+    networkMod.wait(whenHearCall=heard)
 
-while network.isConnected():
+lhn = networkMod.getLocalHostName()
+print ("Start chat...")
+print ("local host: " + lhn)
+
+while networkMod.isConnected():
     phrase = input()
-    print("me:" + phrase)
-    network.say(phrase)
+    
+    if phrase == "quit":
+        networkMod.hangUp()
+    else:
+        networkMod.say(phrase)
