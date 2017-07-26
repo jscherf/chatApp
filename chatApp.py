@@ -5,7 +5,7 @@ import sys
 
 def heard(phrase):
     rhn = networkMod.getRemoteHostName()
-    print(rhn + ":" + phrase)
+    print(rhn + ": " + phrase)
 
 if (len(sys.argv) >= 2):
     networkMod.call (sys.argv[1], whenHearCall=heard)
@@ -15,5 +15,10 @@ else:
 print ("Start chat...")
 
 while networkMod.isConnected():
+    lhn = networkMod.getLocalHostName()
     phrase = input()
-    networkMod.say(phrase)
+    
+    if phrase = "quit":
+        networkMod.hangUp()
+    else:
+        networkMod.say(lhn + ": " + phrase)
