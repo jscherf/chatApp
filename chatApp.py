@@ -1,11 +1,11 @@
 # Simple Chat Application
 
-import network
-import socket
+import networkMod
 import sys
 
 def heard(phrase):
-    print("them:" + phrase)
+    rhn = network.getRemoteHostName()
+    print(rhn + ":" + phrase)
 
 if (len(sys.argv) >= 2):
     network.call (sys.argv[1], whenHearCall=heard)
@@ -16,7 +16,4 @@ print ("Start chat...")
 
 while network.isConnected():
     phrase = input()
-    if (phrase == "quit"):
-        connection.close()
-    else:
-        network.say(phrase)
+    network.say(phrase)
